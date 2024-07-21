@@ -16,9 +16,8 @@ let load = document.querySelector(".loader");
 let mealsRnadom = document.querySelector(".meals .container");
 let cartona = ``;
 let arr= [];
-(async function(){
-    
-
+ss()
+async function ss(){
     if(localStorage.getItem("arr")){
         arr = JSON.parse(localStorage.getItem("arr"));
         for(let i=0; i<arr.length; i++){
@@ -31,6 +30,7 @@ let arr= [];
         }
     }
     else {
+        load.style.display = "flex";
         for(let i=0; i<20; i++){
             let api = await fetch("https://www.themealdb.com/api/json/v1/1/random.php");
             let response = await api.json();
@@ -50,7 +50,7 @@ let arr= [];
     }
     load.style.display = "none";
     mealsRnadom.innerHTML = cartona;
-})()
+}
 // handle the search 
 let cartonaofname = `` ;
 async function searchByName (name){
